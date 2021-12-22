@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="padding:1em;">
+    <div class="page-header">
+        <h1>あなたの映画おすすめ３選</h1>
+    </div>
+    <div class="main">
+        <div class="my-content">
+            <h2 class="center">{{ user.username }}さんのおすすめ</h2>
+            <div class="content">
+                <div class="title"><p>【タイトル】{{ user.title }}</p></div>
+                <div class="movies">
+                    <div class="movie"></div>
+                    <div class="movie"></div>
+                    <div class="movie"></div>    
+                </div>
+                <table align="center" style="width:75%;">
+                    <tr>
+                        <th>作品１</th>
+                        <th>{{ user.movie1 }}</th>
+                    </tr>
+                    <tr>
+                        <th>作品２</th>
+                        <th>{{ user.movie2 }}</th>
+                    </tr>
+                    <tr>
+                        <th>作品３</th>
+                        <th>{{ user.movie3 }}</th>
+                    </tr>
+                    <tr>
+                        <th>Twitterアドレス</th>
+                        <th><a href="https://twitter.com/{{ user.twitter }}?lang=ja" target="blank">{{ user.twitter }}</a></th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

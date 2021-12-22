@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="padding:1em;">
+    <div class="page-header">
+        <h1>あなたの映画おすすめ３選</h1>
+    </div>
+    <div class="main">
+        <div class="my-content">
+            <h2 class="center">{{ username }}さんのおすすめ</h2>
+            <div class="content">
+                {% for user in users %}
+                {% if user.id == user_id %}
+                <div class="title"><p>【タイトル】{{ user.title }}</p></div>
+                <div class="movies">
+                    <div class="movie"><p class="rotate">{{ user.movie1 }}</p></div>
+                    <div class="movie"><p>{{ user.movie2 }}</p></div>
+                    <div class="movie"><p>{{ user.movie3 }}</p></div>    
+                </div>
+                <a class="link" href="{% url 'create' %}"></a>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="users-content">
+            <h2 class="center">みなさんのおすすめ</h2>
+            {% for user in users %}
+            {% if user.id != user_id %}
+            <div class="content">
+                <div class="title"><p>【タイトル】{{ user.title }}</p></div>
+                <div class="movies">
+                    <div class="movie"><p>{{ user.movie1 }}</p></div>
+                    <div class="movie"><p>{{ user.movie2 }}</p></div>
+                    <div class="movie"><p>{{ user.movie3 }}</p></div>    
+                </div>
+                <a class="link" href="{% url 'view' user.id %}"></a>
+                <div class="user-name"><p>投稿者：{{ user.username }}さん</p></div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
